@@ -138,11 +138,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="avl.cpp" />
     <ClCompile Include="book.cpp" />
     <ClCompile Include="openHashTable.cpp" />
     <ClCompile Include="reader.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="avl.h" />
     <ClInclude Include="book.h" />
     <ClInclude Include="inc.h" />
     <ClInclude Include="MyList.h" />
