@@ -16,3 +16,21 @@ book::book(std::string& cphr, const std::string& athr, const std::string& bkNm, 
 	quantityAll = qnttAl;
 	quantityStock = qnttStck;	
 }
+
+bool book::operator>(book& tmp)
+{
+	if(this->cipher > tmp.cipher)
+	{
+		return true;
+	}
+	return false;
+}
+
+bool book::operator<(book& tmp)
+{
+	if (this->cipher < tmp.cipher)
+	{
+		return true;
+	}
+	return false;
+}

@@ -4,17 +4,19 @@ class book
 {
 private:
 	std::string cipher = "000.000"; //NNN Ц номер тематического раздела (цифры), MMM Ц пор€дковый номер книги в разделе (цифры); 
-	std::string author = '\0';
-	std::string bookName = '\0';
-	std::string publHouse = '\0'; //издательство
+	std::string author = "\0";
+	std::string bookName = "\0";
+	std::string publHouse = "\0"; //издательство
 	unsigned int publyear = 0; // год публикации
 	unsigned int quantityAll = 0; //количество экземпл€ров
 	unsigned int quantityStock = 0; //количество в наличие
-	std::list<std::string> readerShfr;
 public:
+	book() = default;
 	book(std::string&, const std::string&, const std::string&, const std::string&,
 		const unsigned int&, const unsigned int&, const unsigned int&);
-
+	bool operator >(book& tmp);
+	bool operator <(book& tmp);
+	
 	const std::string getCipher() { return cipher; }
 	const std::string getAuthor() { return author; }
 	const std::string getBkNm() { return bookName; }

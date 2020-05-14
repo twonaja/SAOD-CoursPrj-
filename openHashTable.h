@@ -22,7 +22,7 @@ public:
     hashTable() :m_size(0) { Head.pNext = &Tail; Tail.pNext = &Head; }
     myNode* search(std::string shfr);
     void ñlear();
-    bool remove(std::string shfr, std::string tmpSPN);
+    bool remove(std::string& shfr, std::string& tmpSPN);
     ~hashTable();
 
     void add(reader&);
@@ -41,10 +41,10 @@ public:
 
     size_t GetSize() { return this->m_size; }
 
-    void print();
+    //void print();
 
-    void AddToBD();
+    //void AddToBD();
 
-    void chExp(int Exp);
+    //void chExp(int Exp);
 };
 

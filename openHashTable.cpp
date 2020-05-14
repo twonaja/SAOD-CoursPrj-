@@ -79,7 +79,7 @@ void hashTable::add(reader& data)
 }
 
 
-bool hashTable::remove(std::string shfr, std::string tmpSPN)
+bool hashTable::remove(std::string& shfr, std::string& tmpSPN)
 {
     myNode* tmp = this->search(shfr);
     if (tmp != nullptr)
@@ -87,7 +87,7 @@ bool hashTable::remove(std::string shfr, std::string tmpSPN)
         int lstSize = tmp->lData.size();
         for (int i = 0; i < lstSize; i++)
         {
-            if (tmp->lData[i].getSPN = tmpSPN)
+            if (tmp->lData[i].getSPN() == tmpSPN)
             {
                 delete tmp;
                 m_size--;

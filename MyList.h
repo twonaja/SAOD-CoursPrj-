@@ -1,195 +1,21 @@
-#pragma once
 
-template<typename T>
+#include "inc.h"
+
 class myList
 {
-public:
-	myList();
-	~myList();
-
-	//удаление первого элемента в списке
-	void pop_front();
-	//добавление элемента в конец списка
-	void push_back(T data);
-	// очистить список
-	void clear();
-	// получить количество елементов в списке
-	int GetSize() { return Size; }
-	// перегруженный оператор [] 
-	T& operator[](const int index);
-	//добавление элемента в начало списка
-	void push_front(T data);
-	//добавление элемента в список по указанному индексу
-	void insert(T data, int index);
-	//удаление элемента в списке по указанному индексу
-	void removeAt(int index);
-	//удаление последнего элемента в списке
-	void pop_back();
-
-private:
-	template<typename T>
-	class Node
+	struct  Node
 	{
-	public:
-		Node* pNext;
-		T data;
-
-		Node(T data = T(), Node* pNext = nullptr)
-		{
-			this->data = data;
-			this->pNext = pNext;
-		}
+		std::string str;
+		Node* Next;
 	};
-	int Size;
-	Node<T>* head;
+	Node* Head, * Tail;                                            //Первый элемент и тот что последний
+	int size;                                                     //Число элементов в списке
+public:
+	myList() :Head(NULL), Tail(NULL), size(0) {};                       //Инициализация элементов в ноль с помощью конструктора
+	~myList();                                                       //Прототип деструктор: в деструкторе освободим память
+	void Add(std::string x);                                              //Прототип функции добавления элементов в списов                                     //Прототип функции отображения элементов списка
+	void Remove(int num);
+	int Count();                                                  //Прототип функции возвращающей число элементов в списке
+	void Sort();
+	friend std::ostream& operator << (std::ostream& os, const myList& lst);
 };
-
-
-template<typename T>
-myList<T>::myList()
-{
-	Size = 0;
-	head = nullptr;
-}
-
-
-template<typename T>
-myList<T>::~myList()
-{
-	clear();
-}
-
-
-template<typename T>
-void myList<T>::pop_front()
-{
-	Node<T>* temp = head;
-
-	head = head->pNext;
-
-	delete temp;
-
-	Size--;
-
-}
-
-template<typename T>
-void myList<T>::push_back(T data)
-{
-	if (head == nullptr)
-	{
-		head = new Node<T>(data);
-	}
-	else
-	{
-		Node<T>* current = this->head;
-
-		while (current->pNext != nullptr)
-		{
-			current = current->pNext;
-		}
-		current->pNext = new Node<T>(data);
-
-	}
-
-	Size++;
-}
-
-template<typename T>
-void myList<T>::clear()
-{
-	while (Size)
-	{
-		pop_front();
-	}
-}
-
-
-template<typename T>
-T& myList<T>::operator[](const int index)
-{
-	int counter = 0;
-
-	Node<T>* current = this->head;
-
-	while (current != nullptr)
-	{
-		if (counter == index)
-		{
-			return current->data;
-		}
-		current = current->pNext;
-		counter++;
-	}
-}
-
-template<typename T>
-void myList<T>::push_front(T data)
-{
-	head = new Node<T>(data, head);
-	Size++;
-}
-
-template<typename T>
-void myList<T>::insert(T data, int index)
-{
-
-	if (index == 0)
-	{
-		push_front(data);
-	}
-	else
-	{
-		Node<T>* previous = this->head;
-
-		for (int i = 0; i < index - 1; i++)
-		{
-			previous = previous->pNext;
-		}
-
-		Node<T>* newNode = new Node<T>(data, previous->pNext);
-
-		previous->pNext = newNode;
-
-		Size++;
-	}
-
-
-
-
-
-}
-
-template<typename T>
-void myList<T>::removeAt(int index)
-{
-	if (index == 0)
-	{
-		pop_front();
-	}
-	else
-	{
-		Node<T>* previous = this->head;
-		for (int i = 0; i < index - 1; i++)
-		{
-			previous = previous->pNext;
-		}
-
-
-		Node<T>* toDelete = previous->pNext;
-
-		previous->pNext = toDelete->pNext;
-
-		delete toDelete;
-
-		Size--;
-	}
-
-}
-
-template<typename T>
-void myList<T>::pop_back()
-{
-	removeAt(Size - 1);
-}
-
