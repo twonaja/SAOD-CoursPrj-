@@ -38,6 +38,45 @@ hashTable::myNode* hashTable::search(const std::string tmpShfr)
     return nullptr;
 }
 
+bool hashTable::searchShf(const std::string tmpShfr)
+{
+    myNode* tmp = Head.pNext;
+    for (size_t i = 0; i < m_size; i++)
+    {
+        if (tmp->shfr == tmpShfr)
+        {
+            int sz = tmp->lData.size();
+            for (size_t i = 0; i < sz; i++)
+            {
+                std::cout << tmp->lData[i];
+            }
+            return true;
+        }
+        tmp = tmp->pNext;
+    }
+    return false;
+}
+
+void hashTable::searchNM(const std::string tmpSPN)
+{
+	if (m_size == 0)
+	{
+		myNode* tmp = Head.pNext;
+		for (size_t i = 0; i < m_size; i++)
+		{
+			int sz = tmp->lData.size();
+			for (size_t i = 0; i < sz; i++)
+			{
+				if (tmp->lData[i].getSPN() == tmpSPN)
+				{
+					std::cout << tmp->lData[i];
+				}
+			}
+			tmp = tmp->pNext;
+		}
+	}
+}
+
 void hashTable::ñlear()
 {
     for (size_t i = 0; i < m_size; i++)
@@ -97,4 +136,19 @@ bool hashTable::remove(std::string& shfr, std::string& tmpSPN)
     }
     return false;
 
+}
+
+std::ostream& operator<<(std::ostream& os, const hashTable& myTable)
+{
+    hashTable::myNode* tmp = myTable.Head.pNext;
+    for (size_t i = 0; i < myTable.m_size; i++)
+    {
+        int sz = tmp->lData.size();
+        for (int i = 0; i < sz; i++)
+        {
+            os << tmp->lData[i] << std::endl;
+        }
+        tmp = tmp->pNext;
+    }
+    return os;
 }

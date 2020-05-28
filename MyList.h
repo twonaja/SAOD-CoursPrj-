@@ -17,5 +17,8 @@ public:
 	void Remove(int num);
 	int Count();                                                  //Прототип функции возвращающей число элементов в списке
 	void Sort();
+	void prntBook(std::string tckt); //вывод книги по билету
+	//std::string getTicket(std::string tckt);
+	int searchBkTicket(std::string tckt, std::string bk);
 	friend std::ostream& operator << (std::ostream& os, const myList& lst);
 };

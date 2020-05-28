@@ -12,6 +12,8 @@ private:
 	unsigned int quantityStock = 0; //количество в наличие
 public:
 	book() = default;
+	~book() = default;
+	
 	book(std::string&, const std::string&, const std::string&, const std::string&,
 		const unsigned int&, const unsigned int&, const unsigned int&);
 	bool operator >(book& tmp);
@@ -21,9 +23,14 @@ public:
 	const std::string getAuthor() { return author; }
 	const std::string getBkNm() { return bookName; }
 	const std::string getPblHs() { return publHouse; }
-	const unsigned int getQnttAll() { return quantityAll; }
-	const unsigned int getQnttStock() { return quantityStock; }
-	
+	unsigned int getQnttAll() { return quantityAll; }
+	unsigned int getQnttStock() { return quantityStock; }
+	void minusBook();
+	void plusBook();
+	friend std::ostream& operator<<(std::ostream& os, const book& myBook);
+	bool operator==(const book& myBook);
+	bool operator==(std::string& cphr);
+	bool operator>=(std::string& cphr);
 	void setQnttStock(const unsigned int qnttStck) { quantityStock = qnttStck; }
 	
 };

@@ -17,6 +17,6 @@ public:
 	//гетры
 	const std::string getTN() { return this->ticketNumber; } //возвращает номер чит билета
 	const std::string getSPN() { return this->SPN; }
-	
+	friend std::ostream& operator<<(std::ostream& os, const reader& myRd);
 };
 

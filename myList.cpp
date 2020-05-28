@@ -84,12 +84,42 @@ void myList::Sort()
 
 }
 
+void myList::prntBook(std::string tckt)
+{
+	myList::Node* temp = this->Head;
+	for (int i = 0; i < this->size; i++)
+	{
+		if ((temp->str.substr(0, 7) == tckt))
+		{
+			std::cout << i + 1 << ") шифр книги: " << temp->str.substr(7) << std::endl;
+		}
+		temp = temp->Next;
+	}
+}
+
+
+
+int myList::searchBkTicket(std::string tckt, std::string bk)
+{
+	myList::Node* temp = this->Head;
+	for (int i = 0; i < this->size; i++)
+	{
+		if ((temp->str.substr(0,7) == tckt) && (temp->str.substr(7) == bk))
+		{
+			return i;
+		}
+		temp = temp->Next;
+	}
+	return -1;
+}
+
 std::ostream& operator<<(std::ostream& os, const myList& lst)
 {
 	myList::Node* temp = lst.Head;
 	for (size_t i = 0; i < lst.size; i++)
 	{
-		os << temp->str << std::endl;
+		os << i + 1 << "Читательский билет: " << temp->str.substr(0,7) << std::endl
+			<<"Шифр книги: " << temp->str.substr(7);
 		temp = temp->Next;
 	}
 	return os;

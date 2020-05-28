@@ -21,10 +21,12 @@ private:
 public:
     hashTable() :m_size(0) { Head.pNext = &Tail; Tail.pNext = &Head; }
     myNode* search(std::string shfr);
+    bool searchShf(const std::string tmpShfr);
+    void searchNM(const std::string tmpSPN);
     void ñlear();
     bool remove(std::string& shfr, std::string& tmpSPN);
     ~hashTable();
-
+    friend std::ostream& operator<<(std::ostream& os, const hashTable& myTable);
     void add(reader&);
     
     //void AddToTail(const reader&);

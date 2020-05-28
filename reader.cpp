@@ -18,3 +18,13 @@ reader::~reader()
 	this->adress = '\0';
 	this->stateWoStd = '\0';
 }
+
+std::ostream& operator<<(std::ostream& os, const reader& myRd)
+{
+	os << "Номер читательского билета: " << myRd.ticketNumber
+		<< "\nФамилия Имя Отчество: " << myRd.SPN
+		<< "\nГод рождения: " << myRd.yearBorn
+		<< "\nАдрес проживания: " << myRd.adress
+		<< "\nМесто работы или учебы: " << myRd.stateWoStd << std::endl;
+	return os;
+}
