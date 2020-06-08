@@ -1,4 +1,4 @@
-#pragma once
+
 #include "inc.h"
 
 using namespace std;
@@ -225,20 +225,25 @@ bool AVL<T>::insert(T key) {
 			* n = root,
 			* parent;
 
-		while (true) {
+		while (true) 
+		{
 			if (n->key == key)
+			{ 
 				return false;
-
+			}
 			parent = n;
 
 			bool goLeft = n->key > key;
 			n = goLeft ? n->left : n->right;
 
-			if (n == NULL) {
-				if (goLeft) {
+			if (n == NULL) 
+			{
+				if (goLeft) 
+				{
 					parent->left = new AVLnode<T>(key, parent);
 				}
-				else {
+				else 
+				{
 					parent->right = new AVLnode<T>(key, parent);
 				}
 
@@ -252,7 +257,8 @@ bool AVL<T>::insert(T key) {
 }
 
 template <class T>
-void AVL<T>::deleteKey(std::string delKey) {
+void AVL<T>::deleteKey(std::string delKey) 
+{
 	if (root == NULL)
 	{ 
 		return;

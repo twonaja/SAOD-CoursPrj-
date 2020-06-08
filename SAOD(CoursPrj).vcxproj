@@ -147,6 +147,7 @@
   <ItemGroup>
     <ClInclude Include="avl.h" />
     <ClInclude Include="book.h" />
+    <ClInclude Include="function.h" />
     <ClInclude Include="inc.h" />
     <ClInclude Include="MyList.h" />
     <ClInclude Include="openHashTable.h" />

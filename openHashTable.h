@@ -1,7 +1,6 @@
 #pragma once
 #include "reader.h"
 
-
 class hashTable
 {
 private:
@@ -22,9 +21,9 @@ public:
     hashTable() :m_size(0) { Head.pNext = &Tail; Tail.pNext = &Head; }
     myNode* search(std::string shfr);
     bool searchShf(const std::string tmpShfr);
-    void searchNM(const std::string tmpSPN);
+    void searchNM(const std::string tmpSurname, const std::string tmpName, const std::string tmpPatr);
     void ñlear();
-    bool remove(std::string& shfr, std::string& tmpSPN);
+    bool remove(std::string& shfr);
     ~hashTable();
     friend std::ostream& operator<<(std::ostream& os, const hashTable& myTable);
     void add(reader&);

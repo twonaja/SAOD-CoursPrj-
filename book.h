@@ -31,7 +31,7 @@ public:
 	bool operator==(const book& myBook);
 	bool operator==(std::string& cphr);
 	bool operator>=(std::string& cphr);
+
 	void setQnttStock(const unsigned int qnttStck) { quantityStock = qnttStck; }
-	
 };
 

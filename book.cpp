@@ -53,12 +53,14 @@ void book::plusBook()
 
 bool book::operator==(const book& myBook)
 {
-	if (this->bookName == myBook.bookName && this->cipher == myBook.cipher);
+	if (this->cipher == myBook.cipher)
 	{
 		return true;
 	}
-	
-	return false;
+	else if(this->cipher != myBook.cipher)
+	{
+		return false;
+	}
 }
 
 bool book::operator==(std::string& cphr)
@@ -79,11 +81,12 @@ bool book::operator>=(std::string& cphr)
 	return false;
 }
 
+
 std::ostream& operator<<(std::ostream& os, const book& myBook)
 {
-	os << "Шифр книги: " << myBook.cipher
-		<< "Название: " << myBook.bookName
-		<< "Автор: " << myBook.author
-		<< "Доступное количество: " << myBook.quantityStock;
+	os << "\nШифр книги: " << myBook.cipher
+		<< "\nНазвание: " << myBook.bookName
+		<< "\nАвтор: " << myBook.author
+		<< "\nДоступное количество: " << myBook.quantityStock;
 	return os;
 }

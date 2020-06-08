@@ -89,14 +89,27 @@ void myList::prntBook(std::string tckt)
 	myList::Node* temp = this->Head;
 	for (int i = 0; i < this->size; i++)
 	{
-		if ((temp->str.substr(0, 7) == tckt))
+		if ((temp->str.substr(0, 8) == tckt))
 		{
-			std::cout << i + 1 << ") шифр книги: " << temp->str.substr(7) << std::endl;
+			std::cout << i + 1 << ") шифр книги: " << temp->str.substr(8) << std::endl;
 		}
 		temp = temp->Next;
 	}
 }
 
+void myList::readerInfo(std::string& book, hashTable& reader)
+{
+	myList::Node* temp = this->Head;
+	for (int i = 0; i < this->size; i++)
+	{
+		if ((temp->str.substr(8) == book))
+		{
+			std::cout << i + 1 << ") Читательский билет: " << temp->str.substr(8) << std::endl;
+			reader.searchShf(temp->str.substr(0, 8));
+		}
+		temp = temp->Next;
+	}
+}
 
 
 int myList::searchBkTicket(std::string tckt, std::string bk)
@@ -104,9 +117,9 @@ int myList::searchBkTicket(std::string tckt, std::string bk)
 	myList::Node* temp = this->Head;
 	for (int i = 0; i < this->size; i++)
 	{
-		if ((temp->str.substr(0,7) == tckt) && (temp->str.substr(7) == bk))
+		if ((temp->str.substr(0,8) == tckt) && (temp->str.substr(8) == bk))
 		{
-			return i;
+			return i + 1;
 		}
 		temp = temp->Next;
 	}
@@ -118,8 +131,8 @@ std::ostream& operator<<(std::ostream& os, const myList& lst)
 	myList::Node* temp = lst.Head;
 	for (size_t i = 0; i < lst.size; i++)
 	{
-		os << i + 1 << "Читательский билет: " << temp->str.substr(0,7) << std::endl
-			<<"Шифр книги: " << temp->str.substr(7);
+		os << i + 1 << "\nЧитательский билет: " << temp->str.substr(0,8) << std::endl
+			<<"Шифр книги: " << temp->str.substr(8) << std::endl;
 		temp = temp->Next;
 	}
 	return os;

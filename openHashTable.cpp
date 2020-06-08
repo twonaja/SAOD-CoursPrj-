@@ -57,9 +57,9 @@ bool hashTable::searchShf(const std::string tmpShfr)
     return false;
 }
 
-void hashTable::searchNM(const std::string tmpSPN)
+void hashTable::searchNM(const std::string tmpSurname, const std::string tmpName, const std::string tmpPatr)
 {
-	if (m_size == 0)
+	if (m_size != 0)
 	{
 		myNode* tmp = Head.pNext;
 		for (size_t i = 0; i < m_size; i++)
@@ -67,9 +67,10 @@ void hashTable::searchNM(const std::string tmpSPN)
 			int sz = tmp->lData.size();
 			for (size_t i = 0; i < sz; i++)
 			{
-				if (tmp->lData[i].getSPN() == tmpSPN)
+				if ((tmp->lData[i].getSur() == tmpSurname) && (tmp->lData[i].getName() == tmpName) && (tmp->lData[i].getPatr() == tmpPatr))
 				{
-					std::cout << tmp->lData[i];
+					std::cout <<"Ф.И.О: " << tmp->lData[i].getSur() << " " << tmp->lData[i].getName() << " " 
+                        << tmp->lData[i].getPatr() << "\nНомер билета: " << tmp->lData[i].getTN() << std::endl;
 				}
 			}
 			tmp = tmp->pNext;
@@ -118,21 +119,35 @@ void hashTable::add(reader& data)
 }
 
 
-bool hashTable::remove(std::string& shfr, std::string& tmpSPN)
+bool hashTable::remove(std::string& shfr)
 {
+    int numReader = -1;
     myNode* tmp = this->search(shfr);
     if (tmp != nullptr)
     {
         int lstSize = tmp->lData.size();
-        for (int i = 0; i < lstSize; i++)
+        if (lstSize == 0)
         {
-            if (tmp->lData[i].getSPN() == tmpSPN)
+            return false;
+        }
+        else
+        {
+            for (int i = 0; i < lstSize; i++)
+            {
+                std::cout << i+1 << ") " << tmp->lData[i].getSur() << " " << tmp->lData[i].getName() 
+                    << " " << tmp->lData[i].getPatr() << std::endl;
+            }
+            std::cout << "Введите номер пользователя из списка для его удаления: ";
+            std::cin >> numReader;
+            tmp->lData.erase(tmp->lData.begin() + (numReader-1));
+            if (tmp->lData.size() == 0)
             {
                 delete tmp;
-                m_size--;
-                return true;
+                this->m_size--;
             }
+            return true;
         }
+               
     }
     return false;
 

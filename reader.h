@@ -6,17 +6,25 @@ class reader
 private:
 	std::string ticketNumber = "C0000-00"; //номер чит билета формат ј - права доступа, цифры до "-" пор€дковый номер регистрации, 
 	// после год регистрации
-	std::string SPN = "\0"; //фамили€ отчество им€
+	std::string name = "\0";//фамили€
+	std::string surname = "\0"; //им€
+	std::string patronymic = "\0";  //отчество 
 	unsigned int yearBorn = 0; // год рождени€
 	std::string adress = "\0"; //адрес проживани€ 
 	std::string stateWoStd = "\0"; //место работы или учебы
 public:
-	reader(const std::string&, const  std::string&, const unsigned int&, const  std::string&, const std::string&);
+	reader(const std::string&, const  std::string&, const  std::string&, const  std::string&, const unsigned int&, const  std::string&, const std::string&);
 	~reader();
 
 	//гетры
 	const std::string getTN() { return this->ticketNumber; } //возвращает номер чит билета
-	const std::string getSPN() { return this->SPN; }
+	
+	const std::string getSur() { return this->surname; }
+	const std::string getName() { return this->name; }
+	const std::string getPatr() { return this->patronymic; }
+
 	friend std::ostream& operator<<(std::ostream& os, const reader& myRd);
+
+	
 };
 
