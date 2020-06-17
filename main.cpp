@@ -38,13 +38,13 @@ int main()
 	{
 		system("cls");
 		choice = 0;
-		std::cout << "1 - Регистрация нового читателя;\n"
+		std::cout << "1 - Регистрация нового читателя\n"
 			"2 - Снятие с обслуживания читателя\n"
 			"3 - Просмотр всех зарегистрированных читателей\n"
 			"4 - Очистка данных о читателях\n"
 			"5 - Поиск читателя по № читательского билета\n"
 			"6 - Поиск читателя по ФИО\n"
-			"7 - Добавление новой книги!\n"
+			"7 - Добавление новой книги\n"
 			"8 - Удаление сведений о книге\n" 
 			"9 - Просмотр всех имеющихся книг\n"
 			"10 - Очистка данных о книгах\n"
@@ -55,7 +55,7 @@ int main()
 			"20 - Выход\n";
 
 		std::cin >> choice;
-
+		cinClear();
 		switch (choice)
 		{
 		case 1:
@@ -114,6 +114,7 @@ int main()
 			system("cls");
 			std::cout << "Очистка данных о читателях\n\n";
 			readHash.сlear();
+			system("pause");
 			break;
 		}
 		case 5:
@@ -187,9 +188,11 @@ int main()
 		{
 			system("cls");
 			std::cout << "Удаление сведений о книге\n\n";
-
-
+			std::cout << "Шифр книги: ";
+			std::cin >> str1;
+			cinClear();
 			bookTree.deleteKey(str1);
+			system("pause");
 			break;
 		}
 		case 9:
@@ -204,7 +207,8 @@ int main()
 		{
 			system("cls");
 			std::cout << "Очистка данных о книгах\n\n";
-
+			bookTree.clear();
+			system("pause");
 			break;
 		}
 		case 11:
@@ -227,7 +231,9 @@ int main()
 		{
 			system("cls");
 			std::cout << "Поиск книги по фрагментам ФИО автора(ов) или названия\n\n";
-			std::cout << hoTakeWhatTake;
+			std::cout << "Введите фрагмент для поиска: ";
+			std::cin >> str1;
+			bookTree.boyerMour(str1);
 			system("pause");
 			break;
 		}

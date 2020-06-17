@@ -31,7 +31,8 @@ void myList::Add(std::string x)
 	else
 	{
 		Head = Tail = temp;	//Если список пуст то создается первый элемент.
-	}                
+	}
+	this->Sort();
 }
 
 void myList::Remove(int num)
@@ -79,9 +80,117 @@ void myList::Remove(int num)
 
 void myList::Sort()
 {
-	
-	 
+	if (size > 1)
+	{
 
+		static int plc1 = 0;
+		static int plc2 = 0;
+		static int plc3 = 0;
+		static int plc4 = 0;
+		static int plc5 = 0;
+
+
+		int counter[5];
+
+		for (size_t i = 0; i < 5; i++)
+		{
+			counter[i] = 0;
+		}
+		myList::Node* temp = this->Head;
+		for (size_t i = 0; i < size; i++)
+		{
+			if (temp->str.substr(8, 3) == "001")
+			{
+				counter[0] = counter[0] + 1;
+			}
+			else if (temp->str.substr(8, 3) == "002")
+			{
+				counter[1] = counter[1] + 1;
+			}
+			else if (temp->str.substr(8, 3) == "003")
+			{
+				counter[2] = counter[2] + 1;
+			}
+			else if (temp->str.substr(8, 3) == "004")
+			{
+				counter[3] = counter[3] + 1;
+			}
+			else if (temp->str.substr(8, 3) == "005")
+			{
+				counter[4] = counter[4] + 1;
+			}
+			temp = temp->Next;
+		}
+		temp = this->Head;
+		std::string* str1 = new std::string[counter[0]];
+		std::string* str2 = new std::string[counter[1]];
+		std::string* str3 = new std::string[counter[2]];
+		std::string* str4 = new std::string[counter[3]];
+		std::string* str5 = new std::string[counter[4]];
+
+
+		for (size_t i = 0; i < size; i++)
+		{
+			if (temp->str.substr(8, 3) == "001")
+			{
+				str1[plc1] = temp->str;
+				plc1++;
+			}
+			else if (temp->str.substr(8, 3) == "002")
+			{
+				str2[plc2] = temp->str;
+				plc2++;
+			}
+			else if (temp->str.substr(8, 3) == "003")
+			{
+				str3[plc3] = temp->str;
+				plc3++;
+			}
+			else if (temp->str.substr(8, 3) == "004")
+			{
+				str4[plc4] = temp->str;
+				plc4++;
+			}
+			else if (temp->str.substr(8, 3) == "005")
+			{
+				str5[plc5] = temp->str;
+				plc5++;
+			}
+			temp = temp->Next;
+		}
+		temp = this->Head;
+		for (size_t i = 0; i < counter[0]; i++)
+		{
+			temp->str = str1[i];
+			temp = temp->Next;
+		}
+		for (size_t i = 0; i < counter[1]; i++)
+		{
+			temp->str = str2[i];
+			temp = temp->Next;
+		}
+		for (size_t i = 0; i < counter[2]; i++)
+		{
+			temp->str = str3[i];
+			temp = temp->Next;
+		}
+		for (size_t i = 0; i < counter[3]; i++)
+		{
+			temp->str = str4[i];
+			temp = temp->Next;
+		}
+		for (size_t i = 0; i < counter[4]; i++)
+		{
+			temp->str = str5[i];
+			temp = temp->Next;
+		}
+		delete[] str1;
+		delete[] str2;
+		delete[] str3;
+		delete[] str4;
+		delete[] str5;
+
+	}
 }
 
 void myList::prntBook(std::string tckt)

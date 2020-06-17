@@ -29,6 +29,7 @@ public:
 	void plusBook();
 	friend std::ostream& operator<<(std::ostream& os, const book& myBook);
 	bool operator==(const book& myBook);
+	bool operator>=(const book& myBook);
 	bool operator==(std::string& cphr);
 	bool operator>=(std::string& cphr);
 

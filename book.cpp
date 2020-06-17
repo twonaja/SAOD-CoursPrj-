@@ -5,7 +5,7 @@ book::book(std::string& cphr, const std::string& athr, const std::string& bkNm, 
 {
 	while (cphr.length() != 7 && cphr[3] != '.')
 	{
-		std::cout << "Ââåäèòå øèôð ïîâòîðíî (ÔÎÐÌÀÒ - NNN.MMM):" << std::endl;
+		std::cout << "\nÂâåäèòå øèôð ïîâòîðíî (ÔÎÐÌÀÒ - NNN.MMM):" << std::endl;
 		std::cin >> cphr;
 	}
 	cipher = cphr;
@@ -58,6 +58,18 @@ bool book::operator==(const book& myBook)
 		return true;
 	}
 	else if(this->cipher != myBook.cipher)
+	{
+		return false;
+	}
+}
+
+bool book::operator>=(const book& myBook)
+{
+	if (this->cipher >= myBook.cipher)
+	{
+		return true;
+	}
+	else if (this->cipher >= myBook.cipher)
 	{
 		return false;
 	}
